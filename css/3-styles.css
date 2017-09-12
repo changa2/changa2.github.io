@@ -54,3 +54,7 @@ a {
 mark {
     background-color: purple;
 }
+
+img {
+    max-width: 200px;
+}
