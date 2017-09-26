@@ -1,7 +1,10 @@
 <html>
   <head>
     <title>Week 4 demo CSS layout</title>
-    <style type="text/css">
+    <style>
+      body {
+        font-family: "Times New Roman";
+      }
       .example2 {
         width:100px;
         height:100px;
@@ -11,11 +14,12 @@
         float:left;
       }
       .example3 {
-        width:100px;
-        height:100px;
+        width:10px;
+        height:10px;
         margin:20px;
         padding:20px;
-        background-color:yellow;
+        background-color:green;
+        color: white;
         display: inline-block;
       }
       .example4 {
@@ -35,8 +39,8 @@
       <div class="example2">TWO</div>
     </div>
     
-    <div class="example3">ONE</div>
-    <div class="example3">TWO</div>
+    <div class="example3">1</div>
+    <div class="example3">2</div>
     
     <div class="example4">Lorem ipsum</div>
     <div class="example4">The width and height of every floated container element depends on the amount of content (text or images) inside the container. This is the <b>shrink-to-fit</b> model. If this div has a lot of text, so that the div is as wide as the page, the float property would have no effect.</div>

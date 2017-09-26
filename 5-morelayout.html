@@ -1,0 +1,88 @@
+<html>
+<head>
+  <title>More Layout: Z-index and Position</title>
+  <style>
+    .textdiv {
+        width: 200px;
+        margin: 10px;
+        /* Things inside slash-asterisks are comments. Just for you! */
+    }
+    .container {
+        position: relative; /* <-- try removing this line */
+        width: 400px;
+        height: 400px;
+        background-color: #eee;
+    }
+
+    .square {
+        position: absolute;
+        width:300px;
+        height:300px;
+    }
+    .one {
+        top: 40px;
+        left: 40px;
+        background-color: lime;
+    
+    }
+    .two {
+        top: 60px;
+        left: 60px;
+        background-color: yellow;
+        
+    }
+    .three {
+        top: 80px;
+        left: 80px;
+        background-color: blue;
+    
+    }
+    .four {
+        top: 100px;
+        left: 100px;
+        background-color: red;
+    }
+
+    .five {
+        position: fixed;
+        top: 150px;
+        right: 30px;
+    }
+    .triangle {
+    	border-bottom: none;
+    	border-top: 60px solid orange;
+    	border-right: 36px solid transparent;
+    	border-left: 36px solid transparent;
+    	width: 0;
+    }
+  </style>
+</head>
+<body>
+    <div class="textdiv">
+        <h4>...absolute</h4>
+        We can use the <code>position</code> property to set an element in a desired location in the page, 
+        by additionally specifying a horizontal and vertical position using the properties <code>left, right, 
+        top</code>, and <code>bottom</code>. These properties specify the distance (in pixels or some other 
+        units) from the <code>(0,0)</code> coordinates of some reference container. Usually, the reference 
+        container is the viewport (top-left corner of the browser viewing area).
+    </div>
+    <div class="container">
+        <div class="one square"></div>
+        <div class="two square"></div>
+        <div class="three square"></div>
+        <div class="four square"></div>
+    </div>
+    <div class="textdiv">
+        <h4>...relative</h4>
+        To use <code>position: relative</code>, you need to know "relative to what?"
+        Which element will act as (0,0) for this element? Set that element as <code>position: absolute</code>
+        and then set your element as <code>position: relative</code> and set the coordinates.
+    </div>
+    <div class="five triangle"></div>
+    <div class="textdiv">
+        <h4>...fixed</h4>
+        <code>position: fixed</code> is very similar to the absolute one, with the difference that the element 
+        remains in its position all the time, while the rest of the page scrolls up and down.
+    </div>
+</body>
+</html>

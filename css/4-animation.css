@@ -1,11 +1,35 @@
+.wrapper {
+    position: relative;
+}
+.dino {
+    width: 100px;
+    animation-name: dinoanim;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    position: absolute;
+    top: 15px;
+    left: 27px;
+}
+
+
+@keyframes dinoanim {
+    from {
+        width: 100px;
+    }
+    to {
+        width: 200px;
+    }
+}
+
 .clock {
     width: 200px;
     height: 200px;
     position: relative;
     animation-name: myclock;
-    animation-duration: 10s;
+    animation-duration: 20s;
     animation-timing-function: linear;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
 }
 
 .seconds {
@@ -37,13 +61,12 @@
     font-weight: bold;
     font-size: 20px;
     text-align: center;
-    animation-name: bubble;
+    animation-name: bubble2;
     animation-duration: 2s;
-    animation-timing-function: ease-in;
-    animation-iteration-count: 3;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
 }
-
-@keyframes bubble {
+@keyframes bubble1 {
     from {
         background-color: blue;
         width: 200px;
@@ -57,6 +80,29 @@
         height: 300px;
         line-height: 300px;
         color: white;
+    }
+}
+@keyframes bubble2 {
+    0% {
+        background-color: blue;
+        width: 200px;
+        height: 200px;
+        line-height: 200px;
+        color: red;
+    }
+    50% {
+        background-color: red;
+        width: 300px;
+        height: 300px;
+        line-height: 300px;
+        color: white;
+    }
+    100% {
+        background-color: blue;
+        width: 200px;
+        height: 200px;
+        line-height: 200px;
+        color: red;
     }
 }
 
