@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<title>Loops</title>
+		<style>
+		    .box {
+		        width: 20px;
+		        height: 20px;
+		        margin: 2px;
+		        display: inline-block;
+		        background-color: green;
+		    }
+		    .ball {
+		        width: 20px;
+		        height: 20px;
+		        border-radius: 10px;
+		        position: relative;
+		        display: inline-block;
+		        background-color: orange;		        
+		    }
+		    .dot {
+		        width: 10px;
+		        height: 10px;
+		        border-radius: 5px;
+		        display: inline-block;
+		        background-color: blue;
+		    }
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+	<body>
+	    <div id="example1"><h3>Example 1</h3></div>
+	    <div id="example2"><h3>Example 2</h3></div>
+	    <div id="example3"><h3>Example 3</h3></div>
+	    <div id="example4"><h3>Example 4</h3></div>
+		<script>
+			/* global $ */
+
+			// Example 1: basic for-loop
+			for (var i = 0; i < 100; i++) {
+               $("#example1").append("<div class='box'></div>");
+            }
+  
+			// Example 2: repeat instructions until condition is satisfied
+			var width = $(window).width();
+			for (var x = 0; x < width; x = x + 50) {
+               $("#example2").append(
+                   "<div class='ball' style='left: " + 
+                   x + "px'></div>"
+               );
+            }
+            
+            // Example 3: see CSS values with jQuery $.each()
+            for (var i = 0; i < 100; i++) {
+               $("#example3").append("<div class='dot'></div>");
+            }
+            $(".dot").each(function() {
+               $(this).css("background-color","red");
+            });
+
+            // Example 4: pick random color from palette
+            var colorArray = ["#490A3D", "#BD1550", "#E97F02", "#F8CA00", "#8A9B0F"];
+            for (var i = 0; i < 50; i++) {
+               var hex = colorArray[Math.floor(Math.random() * colorArray.length)];
+               $("#example4").append("<div class='box' style='background-color:" + hex + "';></div>");
+            }
+		</script>
+	</body>
+</html>

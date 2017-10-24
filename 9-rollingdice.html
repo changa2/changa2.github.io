@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<title>Rolling dice</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<script>
+			/* global $ */
+			
+		    // These two chunks of code produce the same behavior.
+		    // Comment and uncomment one block of code to compare.
+		
+		
+			// Example 1: dice without a function
+			alert("Ready to roll!");
+            var d1 = 1 + Math.floor(Math.random()*20);
+            alert("Rolling... " + d1);
+            var d2 = 1 + Math.floor(Math.random()*20);
+            alert("Rolling... " + d2);
+            var d3 = 1 + Math.floor(Math.random()*6);
+            alert("Rolling... " + d3);
+            alert("Finished.");
+
+			// Example 2: dice with a function
+			/*
+            alert("Ready to roll!");
+            rollDice(20);
+            rollDice(20);
+            rollDice(6);
+            alert("Finished.");
+            
+            function rollDice(numSides) {
+              var d = 1 + Math.floor(Math.random()*numSides);
+              alert("Rolling... " + d);
+            }
+            */
+		</script>
+	</body>
+</html>
