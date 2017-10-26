@@ -32,6 +32,7 @@
 	    <div id="example2"><h3>Example 2</h3></div>
 	    <div id="example3"><h3>Example 3</h3></div>
 	    <div id="example4"><h3>Example 4</h3></div>
+	    <div id="example5"><h3>Example 5</h3></div>
 		<script>
 			/* global $ */
 
@@ -40,29 +41,53 @@
                $("#example1").append("<div class='box'></div>");
             }
   
+			// ---------------------------------------------------
 			// Example 2: repeat instructions until condition is satisfied
 			var width = $(window).width();
 			for (var x = 0; x < width; x = x + 50) {
-               $("#example2").append(
-                   "<div class='ball' style='left: " + 
-                   x + "px'></div>"
-               );
-            }
+            $("#example2").append(
+                "<div class='ball' style='left: " + 
+                x + "px'></div>"
+            );
+         }
             
-            // Example 3: see CSS values with jQuery $.each()
-            for (var i = 0; i < 100; i++) {
-               $("#example3").append("<div class='dot'></div>");
-            }
-            $(".dot").each(function() {
-               $(this).css("background-color","red");
-            });
+			// ---------------------------------------------------
+         // Example 3: see CSS values with jQuery $.each()
+         for (var i = 0; i < 100; i++) {
+            $("#example3").append("<div class='dot'></div>");
+         }
+         // color each dot a random color... (getRandomColor() is executed 100 times)
+         $(".dot").each(function() {
+            $(this).css("background-color",getRandomColor());
+         });
+         // ... compare that to this line, which colors all dots the same random color (getRandomColor() is executed only once)
+         // $(".dot").css("background-color",getRandomColor());
 
-            // Example 4: pick random color from palette
-            var colorArray = ["#490A3D", "#BD1550", "#E97F02", "#F8CA00", "#8A9B0F"];
-            for (var i = 0; i < 50; i++) {
-               var hex = colorArray[Math.floor(Math.random() * colorArray.length)];
-               $("#example4").append("<div class='box' style='background-color:" + hex + "';></div>");
-            }
+			function getRandomColor () {
+				// this function returns a string with format "rgb(000,000,000)" where 000 is an integer between 0 and 255
+				var random0to255 = function() {
+					return Math.floor(Math.random()*255);
+				}
+				return "rgb(" + random0to255() + "," + random0to255() + "," + random0to255() + ")";
+			}
+
+			// ---------------------------------------------------
+			// Example 4: gradient of opacity for each box
+			for (var i = 0; i < 100; i++) {
+				$("#example4").append("<div class='box'></div>");
+			}
+			var opacity = 0;
+			$("#example4 .box").each(function() {
+				opacity += .01
+				$(this).css("opacity", opacity);
+			});
+
+         // Example 4: pick random color from palette
+         var colorArray = ["#490A3D", "#BD1550", "#E97F02", "#F8CA00", "#8A9B0F"];
+         for (var i = 0; i < 50; i++) {
+            var hex = colorArray[Math.floor(Math.random() * colorArray.length)];
+            $("#example5").append("<div class='box' style='background-color:" + hex + "';></div>");
+         }
 		</script>
 	</body>
 </html>
