@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>NYT Top Stories</title>
+        <style>
+            #stories {
+                list-style: none;
+            }
+            li {
+                width: 500px;
+                border: 1px solid gray;
+                margin-bottom: 5px;
+            }
+            img {
+                display: inline-block;
+            }
+            .title {
+                padding-left: 5px;
+                width: 415px;
+                display: inline-block;
+                text-decoration: none;
+                color: black;
+                vertical-align: top;
+                font-family: Helvetica, sans serif;
+                font-weight: bold;
+            }
+            .charcount {
+                background-color: #0769ad;
+                height: 3px;
+                margin-bottom: 5px;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        NYT Top Stories API demo
+        <ul id="stories"></ul>
+        <script>
+            /* global $ */
+
+            var url = "https://api.nytimes.com/svc/topstories/v2/home.json",
+                apikey = "436e4c0731324a5faa7741a58ba6adec"; // see: https://developer.nytimes.com
+
+            $.getJSON({ // see: http://api.jquery.com/jQuery.getJSON/
+                url: url,
+                data: {"api-key": apikey},
+            }).done(function(response) {
+                console.log(response); // for debugging
+                $.each(response.results, function(index, item) {  // see: http://api.jquery.com/jQuery.each/
+                    var i = "<img src='"+ item.multimedia[0].url +"'>";
+                    var c = "<div class='charcount' style='width: "+ (8 * (item.title.length-35)) +"px'></div>";  // color bar varies according to length of title
+                    var t = "<div class='title'>"+ c + item.title + "</div>";
+                    $('#stories').append("<a href='"+ item.url +"'><li>"+ i + t + "</li></a>");
+                });
+            }).fail(function(err) {
+              var msg = "Error fetching from NYT API: " + err;
+              console.log(msg);
+              $('.results').html(msg);
+            });
+
+        </script>
+    </body>
+</html>

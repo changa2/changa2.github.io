@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Instagram Feed</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h3>Instagram Feed API demo</h3>
+        <ul></ul>
+        <script>
+            /* global $ */
+
+            // Follow Week 11 slides to obtain your access token
+            // see also: https://instagram.com/developer/clients/manage
+            var token = "1043615663.a5eac11.e2362a79b5c04979ae4385275fa5ae70",
+                num_photos = 4;
+
+            $.ajax({ // see: http://api.jquery.com/jQuery.ajax/
+                url: "https://api.instagram.com/v1/users/self/media/recent",
+                dataType: "jsonp", // for cross-origin requests (how instagram API is configured)
+                type: "GET",
+                data: {access_token: token, count: num_photos},
+                success: function(data){
+                    // console.log(data); // for debugging
+                    $.each(data.data, function(index, item) {  // see: http://api.jquery.com/jQuery.each/
+                        var img = item.images.low_resolution.url;
+                        var likes = item.likes.count;
+                        $("ul").append("<li><img src='"+ img +"'>&nbsp;"+ likes +" likes</li>");
+                    });
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            });
+        </script>
+    </body>
+</html>
